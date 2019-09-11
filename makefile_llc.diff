@@ -1,0 +1,10 @@
+--- Makefile.in.orig	2019-09-09 14:35:04.796370496 -0700
++++ Makefile.in	2019-09-09 14:34:47.452360502 -0700
+@@ -227,6 +227,7 @@
+ precompiled/$(PRECOMPILED_ARCH).$(OBJEXT): $(LLVM_PLUGIN) \
+                                            precompiled/$(PRECOMPILED_ARCH).bc
+ 	$(LLC) -load=$(LLVM_PLUGIN) -mtriple=$(TARGET_TRIPLE) -O2 \
++	-relocation-model=pic \
+ 	-tailcallopt -filetype=obj -o $@ precompiled/$(PRECOMPILED_ARCH).bc
+ 
+ ./minismlsharp: $(RUNTIME_TARGETS) $(COMPILER_SUPPORT_OBJECTS) \
